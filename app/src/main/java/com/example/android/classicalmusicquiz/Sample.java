@@ -58,11 +58,12 @@ class Sample {
 
     /**
      * Gets portrait of the composer for a sample by the sample ID.
-     * @param context The application context.
+     *
+     * @param context  The application context.
      * @param sampleID The sample ID.
      * @return The portrait Bitmap.
      */
-    static Bitmap getComposerArtBySampleID(Context context, int sampleID){
+    static Bitmap getComposerArtBySampleID(Context context, int sampleID) {
         Sample sample = Sample.getSampleByID(context, sampleID);
         int albumArtID = context.getResources().getIdentifier(
                 sample != null ? sample.getAlbumArtID() : null, "drawable",
@@ -72,7 +73,8 @@ class Sample {
 
     /**
      * Gets a single sample by its ID.
-     * @param context The application context.
+     *
+     * @param context  The application context.
      * @param sampleID The sample ID.
      * @return The sample object.
      */
@@ -97,10 +99,11 @@ class Sample {
 
     /**
      * Gets and ArrayList of the IDs for all of the Samples from the JSON file.
+     *
      * @param context The application context.
      * @return The ArrayList of all sample IDs.
      */
-    static ArrayList<Integer> getAllSampleIDs(Context context){
+    static ArrayList<Integer> getAllSampleIDs(Context context) {
         JsonReader reader;
         ArrayList<Integer> sampleIDs = new ArrayList<>();
         try {
@@ -118,6 +121,7 @@ class Sample {
 
     /**
      * Method used for obtaining a single sample from the JSON file.
+     *
      * @param reader The JSON reader object pointing a single sample JSON object.
      * @return The Sample the JsonReader is pointing to.
      */
@@ -162,6 +166,7 @@ class Sample {
 
     /**
      * Method for creating a JsonReader object that points to the JSON array of samples.
+     *
      * @param context The application context.
      * @return The JsonReader object pointing to the JSON array of samples.
      * @throws IOException Exception thrown if the sample file can't be found.

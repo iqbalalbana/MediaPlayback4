@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         highScoreTextView.setText(highScoreText);
 
         // If the game is over, show the game finished UI.
-        if(getIntent().hasExtra(GAME_FINISHED)){
+        if (getIntent().hasExtra(GAME_FINISHED)) {
             TextView gameFinishedTextView = (TextView) findViewById(R.id.gameResult);
             TextView yourScoreTextView = (TextView) findViewById(R.id.resultScore);
 
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * The OnClick method for the New Game button that starts a new game.
+     *
      * @param view The New Game button.
      */
     public void newGame(View view) {

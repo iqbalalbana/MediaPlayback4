@@ -34,11 +34,12 @@ class QuizUtils {
     /**
      * Generates an ArrayList of Integers that contains IDs to NUM_ANSWERS samples. These samples
      * constitute the possible answers to the question.
+     *
      * @param remainingSampleIDs The ArrayList of Integers which contains the IDs of all
      *                           samples that haven't been used yet.
      * @return The ArrayList of possible answers.
      */
-    static ArrayList<Integer> generateQuestion(ArrayList<Integer> remainingSampleIDs){
+    static ArrayList<Integer> generateQuestion(ArrayList<Integer> remainingSampleIDs) {
 
         // Shuffle the remaining sample ID's.
         Collections.shuffle(remainingSampleIDs);
@@ -46,8 +47,8 @@ class QuizUtils {
         ArrayList<Integer> answers = new ArrayList<>();
 
         // Pick the first four random Sample ID's.
-        for(int i = 0; i < NUM_ANSWERS; i++){
-            if(i < remainingSampleIDs.size()) {
+        for (int i = 0; i < NUM_ANSWERS; i++) {
+            if (i < remainingSampleIDs.size()) {
                 answers.add(remainingSampleIDs.get(i));
             }
         }
@@ -57,10 +58,11 @@ class QuizUtils {
 
     /**
      * Helper method for getting the user's high score.
+     *
      * @param context The application context.
      * @return The user's high score.
      */
-    static int getHighScore(Context context){
+    static int getHighScore(Context context) {
         SharedPreferences mPreferences = context.getSharedPreferences(
                 context.getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         return mPreferences.getInt(HIGH_SCORE_KEY, 0);
@@ -68,10 +70,11 @@ class QuizUtils {
 
     /**
      * Helper method for setting the user's high score.
-     * @param context The application context.
+     *
+     * @param context   The application context.
      * @param highScore The user's high score.
      */
-    static void setHighScore(Context context, int highScore){
+    static void setHighScore(Context context, int highScore) {
         SharedPreferences mPreferences = context.getSharedPreferences(
                 context.getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mPreferences.edit();
@@ -81,10 +84,11 @@ class QuizUtils {
 
     /**
      * Helper method for getting the user's current score.
+     *
      * @param context The application context.
      * @return The user's current score.
      */
-    static int getCurrentScore(Context context){
+    static int getCurrentScore(Context context) {
         SharedPreferences mPreferences = context.getSharedPreferences(
                 context.getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         return mPreferences.getInt(CURRENT_SCORE_KEY, 0);
@@ -92,10 +96,11 @@ class QuizUtils {
 
     /**
      * Helper method for setting the user's current score.
-     * @param context The application context.
+     *
+     * @param context      The application context.
      * @param currentScore The user's current score.
      */
-    static void setCurrentScore(Context context, int currentScore){
+    static void setCurrentScore(Context context, int currentScore) {
         SharedPreferences mPreferences = context.getSharedPreferences(
                 context.getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mPreferences.edit();
@@ -105,10 +110,11 @@ class QuizUtils {
 
     /**
      * Picks one of the possible answers to be the correct one at random.
+     *
      * @param answers The possible answers to the question.
      * @return The correct answer.
      */
-    static int getCorrectAnswerID(ArrayList<Integer> answers){
+    static int getCorrectAnswerID(ArrayList<Integer> answers) {
         Random r = new Random();
         int answerIndex = r.nextInt(answers.size());
         return answers.get(answerIndex);
@@ -116,20 +122,22 @@ class QuizUtils {
 
     /**
      * Checks that the user's selected answer is the correct one.
+     *
      * @param correctAnswer The correct answer.
-     * @param userAnswer The user's answer
+     * @param userAnswer    The user's answer
      * @return true if the user is correct, false otherwise.
      */
-    static boolean userCorrect(int correctAnswer, int userAnswer){
+    static boolean userCorrect(int correctAnswer, int userAnswer) {
         return userAnswer == correctAnswer;
     }
 
 
     /**
      * Helper method for ending the game.
+     *
      * @param context The application method.
      */
-    static void endGame(Context context){
+    static void endGame(Context context) {
         Intent endGame = new Intent(context, MainActivity.class);
         endGame.putExtra(GAME_FINISHED, true);
         context.startActivity(endGame);
